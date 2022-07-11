@@ -121,6 +121,7 @@
 		8BAF3C992758693B0073B30E /* VideoProcess.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BAF3C942758693A0073B30E /* VideoProcess.strings */; };
 		8BAF3C9A2758693B0073B30E /* VideoProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF3C962758693A0073B30E /* VideoProcess.swift */; };
 		8BAF3C9B2758693B0073B30E /* VideoProcess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAF3C972758693A0073B30E /* VideoProcess.storyboard */; };
+		9A1E8A0A287BAB50009EC218 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A1E8A09287BAB50009EC218 /* sample.mp3 */; };
 		A7847F922458062900469187 /* StatisticsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7847F912458062900469187 /* StatisticsInfo.swift */; };
 		A7847F942458089E00469187 /* AgoraExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7847F932458089E00469187 /* AgoraExtension.swift */; };
 		A7BD7660247CC6920062A6B3 /* UITypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BD765F247CC6920062A6B3 /* UITypeAlias.swift */; };
@@ -340,6 +341,7 @@
 		8BAF3C982758693A0073B30E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/VideoProcess.storyboard; sourceTree = "<group>"; };
 		92EACE913B50B28F1588FE03 /* Pods-Agora-ScreenShare-Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora-ScreenShare-Extension.release.xcconfig"; path = "Target Support Files/Pods-Agora-ScreenShare-Extension/Pods-Agora-ScreenShare-Extension.release.xcconfig"; sourceTree = "<group>"; };
 		960FD7C836F90E68E6776106 /* Pods_APIExample_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIExample_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A1E8A09287BAB50009EC218 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 		A7847F912458062900469187 /* StatisticsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsInfo.swift; sourceTree = "<group>"; };
 		A7847F932458089E00469187 /* AgoraExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraExtension.swift; sourceTree = "<group>"; };
 		A7BD765F247CC6920062A6B3 /* UITypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITypeAlias.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 		03BEED09251C4446005E78F4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A1E8A09287BAB50009EC218 /* sample.mp3 */,
 				8B349FE22681E2CE007247F2 /* agora-logo.png */,
 				5771636326453E8E0072DE96 /* output.raw */,
 				7FBE1D532576A904005A8619 /* model.bundle */,
@@ -895,7 +898,7 @@
 				578AA65A259A056D00D7CAD9 /* CreateDataStream */,
 				03FB5B2F25642E7C00F04ED0 /* LiveStreaming */,
 				0364C1F52551AD6D00C6C0AE /* ARKit */,
-                F38CCE3C27FD9D8E00232EC9 /* PictureInPicture */,
+				F38CCE3C27FD9D8E00232EC9 /* PictureInPicture */,
 				033A9F05252D61FB00BC26E1 /* RTMPStreaming */,
 				033A9EE8252D5F5E00BC26E1 /* JoinMultiChannel */,
 				033A9EED252D61E200BC26E1 /* CustomAudioRender */,
@@ -1074,6 +1077,7 @@
 				57B7FC89259C599100407BE1 /* RawAudioData.storyboard in Resources */,
 				03B12DAA251125B700E55818 /* VideoView.xib in Resources */,
 				67D9A15727E94FAF008C3F8E /* SpatialAudio.storyboard in Resources */,
+				9A1E8A0A287BAB50009EC218 /* sample.mp3 in Resources */,
 				576EA58525AED471000B3D79 /* VideoChat.storyboard in Resources */,
 				033A9F48252D89D000BC26E1 /* CustomAudioRender.storyboard in Resources */,
 				033A9F4D252D89DB00BC26E1 /* CustomAudioSource.storyboard in Resources */,
@@ -1653,6 +1657,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1714,6 +1719,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

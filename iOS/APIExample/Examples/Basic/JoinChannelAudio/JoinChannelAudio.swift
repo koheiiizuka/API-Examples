@@ -9,14 +9,18 @@
 import UIKit
 import AgoraRtcKit
 import AGEVideoLayout
+import AVFAudio
 
 class JoinChannelAudioEntry: UIViewController {
     @IBOutlet weak var joinButton: AGButton!
+    @IBOutlet weak var playButton: AGButton!
     @IBOutlet weak var channelTextField: AGTextField!
     @IBOutlet weak var scenarioBtn: UIButton!
     @IBOutlet weak var profileBtn: UIButton!
     var profile:AgoraAudioProfile = .default
     var scenario:AgoraAudioScenario = .default
+    var isPlaying:Bool = false
+    var audioPlayer: AVAudioPlayer?
     let identifier = "JoinChannelAudio"
     
     override func viewDidLoad() {
@@ -37,6 +41,79 @@ class JoinChannelAudioEntry: UIViewController {
         newViewController.title = channelName
         newViewController.configs = ["channelName":channelName, "audioProfile":profile, "audioScenario":scenario]
         self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    @IBAction func doPlayPressed(sender: AGButton) {
+        
+        if (self.isPlaying) {
+            
+            if let useAudioPlayer = self.audioPlayer {
+                useAudioPlayer.pause()
+                useAudioPlayer.currentTime = 0
+                useAudioPlayer.stop()
+                self.audioPlayer = nil
+                self.isPlaying = false
+                do {
+                    let audioSession = AVAudioSession.sharedInstance()
+                    try audioSession.setCategory(.ambient, mode: .default, options: [])
+                    try audioSession.setActive(false)
+                } catch let error as NSError {
+                    print("%s", error.localizedDescription)
+                    return
+                }
+            }
+            
+        } else {
+            
+            if let useAudioPlayer = self.audioPlayer {
+                
+                do {
+                    let audioSession = AVAudioSession.sharedInstance()
+                    try audioSession.setCategory(.playAndRecord, mode: .voiceChat, options: [.defaultToSpeaker, .mixWithOthers, .allowBluetooth, .allowBluetoothA2DP])
+                    try audioSession.setActive(true)
+                } catch let error as NSError {
+                    print("%s", error.localizedDescription)
+                    return
+                }
+                
+                useAudioPlayer.play()
+                
+            } else {
+                
+                let audioFileUrl = URL(fileURLWithPath: getAudioFilePath("sample"))
+                let audioSession = AVAudioSession.sharedInstance()
+                var audioPlayer: AVAudioPlayer
+                do {
+                    try audioSession.setCategory(.playAndRecord, mode: .voiceChat, options: [.defaultToSpeaker, .mixWithOthers, .allowBluetooth, .allowBluetoothA2DP])
+                    try audioSession.setActive(true)
+                    audioPlayer = try AVAudioPlayer(contentsOf: audioFileUrl)
+                } catch let error as NSError {
+                    print("%s", error.localizedDescription)
+                    return
+                }
+                
+                audioPlayer.play()
+                
+                self.audioPlayer = audioPlayer
+                
+            }
+            
+            self.isPlaying = true
+            
+        }
+        
+    }
+    
+    private func getAudioFilePath(_ filePath: String) -> String {
+
+        guard let usingPath = Bundle.main.path(forResource: filePath, ofType: "mp3") else {
+
+            return ""
+
+        }
+
+        return usingPath
+
     }
     
     func getAudioProfileAction(_ profile:AgoraAudioProfile) -> UIAlertAction {
